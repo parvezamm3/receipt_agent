@@ -441,12 +441,12 @@ def human_validation_with_gradio(
                     result = f"REJECTED: Human rejected. Feedback: {feedback}"
                 validation_result_holder.append(result)
                 server_ready_to_close.set()
-                return "Process completed. You selected: {action_type}. Please close the browser."
+                return f"Process completed. You selected: {action_type}. Please close the browser."
             except Exception as e:
                 error_msg = f"REJECTED: JSON error: {e}"
                 validation_result_holder.append(error_msg)
                 server_ready_to_close.set()
-                return "Process completed. You selected: {action_type}. Please close the browser."
+                return f"Process completed. You selected: {action_type}. Please close the browser."
         
         def embed_pdf(url): return f'<iframe src="{url}" width="100%" height="600px" style="border:none;"></iframe>'
 
@@ -455,8 +455,11 @@ def human_validation_with_gradio(
         with demo:
             gr.Markdown("# Receipt Data Human Validation")
             gr.Markdown("Please review the extracted data and the original receipt images. Edit the JSON if necessary.")
-            gr.Markdown(f"**{validation_status}**") 
-
+            with gr.Row():
+                with gr.Column():
+                    gr.Markdown(f"**{validation_status}**") 
+                with gr.Column():
+                    status = gr.Textbox(label="Status", interactive=False, visible=True)
             with gr.Row():
                 with gr.Column():
                     gr.Markdown("## Original PDF Document")
@@ -480,7 +483,6 @@ def human_validation_with_gradio(
                         approve_btn = gr.Button("Approve & Submit (OK)", variant="primary")
                         reject_btn = gr.Button("Reject", variant="stop")
             
-                    status = gr.Textbox(label="Status", interactive=False, visible=True)
 
             approve_btn.click(
                 fn=lambda x: submit(x, "approve"),

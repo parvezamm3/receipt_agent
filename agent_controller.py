@@ -524,7 +524,7 @@ def monitor_and_process_pdfs(input_dir, processed_dir, error_dir, crop_img_dir, 
         import sys
         print("🛑 Stopping monitor...")
         observer.stop()
-        observer.join()
+        # observer.join()
         print("✅ Folder monitor exited cleanly.")
         sys.exit(0)
     
