@@ -64,7 +64,7 @@ class PDFServer:
 
                     httpd = self.httpd
                     thread = self.thread
-                    print(httpd, thread)
+                    # print(httpd, thread)
                     self.httpd = None
                     self.thread = None
                     print(f"[PDFServer] Before shutdown - thread alive: {self.thread.is_alive() if self.thread else 'No thread'}")
