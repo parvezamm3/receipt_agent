@@ -441,12 +441,12 @@ def human_validation_with_gradio(
                     result = f"REJECTED: Human rejected. Feedback: {feedback}"
                 validation_result_holder.append(result)
                 server_ready_to_close.set()
-                return "Submitted"
+                return "Process completed. You selected: {action_type}. Please close the browser."
             except Exception as e:
                 error_msg = f"REJECTED: JSON error: {e}"
                 validation_result_holder.append(error_msg)
                 server_ready_to_close.set()
-                return error_msg
+                return "Process completed. You selected: {action_type}. Please close the browser."
         
         def embed_pdf(url): return f'<iframe src="{url}" width="100%" height="600px" style="border:none;"></iframe>'
 
