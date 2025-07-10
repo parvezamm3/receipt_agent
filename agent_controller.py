@@ -38,7 +38,7 @@ if GOOGLE_API_KEY:
 
 
 # --- Project Folder Setup ---
-DRIVE_PROJECT_FOLDER = r"C:\Users\parvez427\Dev\ReciptAgent" # Use raw string or forward slashes
+DRIVE_PROJECT_FOLDER = os.path.dirname(os.path.abspath(__file__))  # Dynamically set to current project folder
 input_pdf_folder = os.path.join(DRIVE_PROJECT_FOLDER, "pdfs")
 success_pdf_folder = os.path.join(DRIVE_PROJECT_FOLDER, "success_pdfs")
 output_pdf_folder = os.path.join(DRIVE_PROJECT_FOLDER, "output_pdfs")
