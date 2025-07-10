@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Authentication
+service_account_key.json
+
+# Data
+extracted_receipt_data.json
+
+# Folders
+/images/
+/output_pdfs/
+/error_pdfs/
+/success_pdfs/
+/pdfs/
